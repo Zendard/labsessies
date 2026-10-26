@@ -22,10 +22,5 @@
 
         </dependency>
     </dependencies>
-    <repository>
-        <id>local</id>
-        <name>Local</name>
-        <url>file:${project.basedir}/../Framework/repo</url>
-    </repository>
 
 </project>
