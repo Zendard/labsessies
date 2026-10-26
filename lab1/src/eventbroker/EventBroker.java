@@ -2,16 +2,19 @@ package eventbroker;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
-final public class EventBroker {
+final public class EventBroker implements Runnable {
 
     protected HashMap<String,Set<EventListener>> listeners = new HashMap<String,Set<EventListener>>();
     protected final static EventBroker broker = new EventBroker();
-
+    protected LinkedList<QueueItem> queue = new LinkedList<>();
     private EventBroker() {
         this.listeners.put("*",new HashSet<>());
     }
+
+    private record QueueItem(Event event, EventPublisher source){}
 
     public static EventBroker getEventBroker() {
         return broker;
@@ -42,7 +45,7 @@ final public class EventBroker {
     }
 
     void addEvent(EventPublisher source, Event e) {
-        process(source, e);
+        queue.add(new QueueItem(e,source));
     }
 
     private void process(EventPublisher source, Event e) {
@@ -55,6 +58,13 @@ final public class EventBroker {
             if (l != source) {
                 l.handleEvent(e); // prevent loops !
             }
+        }
+    }
+    public void run(){
+        while(!this.queue.isEmpty()){
+            EventPublisher source = queue.poll().source();
+            Event event = queue.poll().event();
+            this.process(source, event);
         }
     }
 }
