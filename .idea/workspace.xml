@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b45c164-54aa-4f88-abe7-e8b45a210601" name="Changes" comment="Add modules">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/pom.xml" afterDir="false" />
+    <list default="true" id="4b45c164-54aa-4f88-abe7-e8b45a210601" name="Changes" comment="Configure Maven">
+      <change afterPath="$PROJECT_DIR$/Framework/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/main/orderhandeler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/BlacklistOrderProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/OrderEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/OrderProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/order/BlacklistOrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/order/BlacklistOrderProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,8 @@
     <MESSAGE value="Remove broken maven repo" />
     <MESSAGE value="Clean" />
     <MESSAGE value="Add modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add modules" />
+    <MESSAGE value="Configure Maven" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configure Maven" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
