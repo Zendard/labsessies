@@ -4,16 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b45c164-54aa-4f88-abe7-e8b45a210601" name="Changes" comment="Configure Maven">
-      <change afterPath="$PROJECT_DIR$/Framework/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/main/orderhandeler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/BlacklistOrderProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/OrderEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/order/OrderProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/main/java/order/BlacklistOrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/order/BlacklistOrderProcessor.java" afterDir="false" />
+    <list default="true" id="4b45c164-54aa-4f88-abe7-e8b45a210601" name="Changes" comment="Add module-info.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/src/main/java/eventbroker/EventBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/src/main/java/eventbroker/EventBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/eventbroker/EventBroker$QueueItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/target/classes/eventbroker/EventBroker$QueueItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/eventbroker/EventBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/target/classes/eventbroker/EventBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/main/orderhandeler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/order/BlacklistOrderProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/order/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/order/OrderEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/target/classes/order/OrderProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/main/java/order/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/main/java/order/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Main/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/target/classes/order/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Main/target/classes/order/Customer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +47,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3L5RUpRcL7LP72hg2WGJYIZEM0e" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -139,7 +147,8 @@
     <MESSAGE value="Clean" />
     <MESSAGE value="Add modules" />
     <MESSAGE value="Configure Maven" />
-    <option name="LAST_COMMIT_MESSAGE" value="Configure Maven" />
+    <MESSAGE value="Add module-info.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add module-info.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -153,6 +162,11 @@
           <url>file://$PROJECT_DIR$/Framework/src/main/java/org/example/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Framework/src/main/java/eventbroker/EventBroker.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
