@@ -24,7 +24,7 @@ public class Customer extends EventPublisher implements Runnable{
     }
     
     public void buy(String item){
-        System.out.println(name + " places an order for item "+item);
+        //System.out.println(name + " places an order for item "+item);
         publishEvent(new OrderEvent(name, item));
     }
 
