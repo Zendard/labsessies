@@ -23,6 +23,7 @@ public class OrderProcessor implements EventListener {
 
     
     protected void processOrder(OrderEvent order){
+        doWork(10);
         processedOrders++;
         //System.out.println("Order of item "+order.getItem()+" for customer "+order.getCustomer()+ " processed!");
     }
