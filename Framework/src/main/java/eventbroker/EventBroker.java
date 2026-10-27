@@ -11,7 +11,7 @@ final public class EventBroker implements Runnable {
     private final HashMap<String,Set<EventListener>> listeners = new HashMap<String,Set<EventListener>>();
     private final Thread thread= new Thread(this);
     private final static EventBroker broker = new EventBroker();
-    private final LinkedBlockingQueue<QueueItem> queue = new LinkedBlockingQueue<>();
+    private final LinkedList<QueueItem> queue = new LinkedList<>();
     private EventBroker() {
         this.listeners.put("*",new HashSet<>());
     }
@@ -48,7 +48,7 @@ final public class EventBroker implements Runnable {
     }
 
     void addEvent(EventPublisher source, Event e) {
-        this.queue.add(new QueueItem(e,source));
+        this.addToQueue(new QueueItem(e,source));
     }
 
     private void process(EventPublisher source, Event e) {
@@ -64,16 +64,23 @@ final public class EventBroker implements Runnable {
         }
     }
     public void run(){
-
-        while(!this.queue.isEmpty()||queueFlag){
-            var queue=this.queue;
-            if (!queue.isEmpty()) {
-                var temp = queue.poll();
+        QueueItem temp = null;
+        while(!(temp==null) ||queueFlag){
+            temp=this.pollQueue();
+            if (!(temp==null)) {
                 EventPublisher source = temp.source();
                 Event event = temp.event();
                 this.process(source, event);
             }
         }
+    }
+
+    private synchronized void addToQueue(QueueItem item){
+        this.queue.add(item);
+    }
+
+    private synchronized QueueItem pollQueue(){
+        return this.queue.poll();
     }
 
     public void start(){
