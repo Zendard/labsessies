@@ -13,9 +13,8 @@ final public class EventBroker implements Runnable {
     private EventBroker() {
         this.listeners.put("*",new HashSet<>());
     }
-    private boolean queueFlag=true;
     private final Object queueLock=new Object();
-    private boolean queueHasData=true;
+    private boolean moetStoppen;
 
     private record QueueItem(Event event, EventPublisher source){}
 
@@ -51,10 +50,9 @@ final public class EventBroker implements Runnable {
     }
 
     void addEvent(EventPublisher source, Event e) {
-        this.addToQueue(new QueueItem(e,source));
-        synchronized (queueLock){
-            queueHasData=true;
-            queueLock.notifyAll();
+        synchronized (queueLock) {
+            queue.add(new QueueItem(e, source));
+            queueLock.notifyAll();          // maak hem wakker
         }
     }
 
@@ -70,6 +68,7 @@ final public class EventBroker implements Runnable {
             }
         }
     }
+    /*
     public void run(){
         QueueItem temp = null;
         while(!(temp==null) || queueFlag){
@@ -90,26 +89,39 @@ final public class EventBroker implements Runnable {
             }
         }
     }
-
-    private synchronized void addToQueue(QueueItem item){
-        this.queue.add(item);
-    }
-
-    private synchronized QueueItem pollQueue(){
-        return this.queue.poll();
+    */
+    public void run() {
+        while (true) {
+            QueueItem temp;
+            synchronized (queueLock) {
+                while (queue.isEmpty() && !moetStoppen) {
+                    try {
+                        queueLock.wait();   // queue leeg
+                    } catch (InterruptedException _) {}
+                }
+                if (queue.isEmpty()) {
+                    return;                 // stop gevraagd en niets meer te doen
+                }
+                temp = queue.poll();
+            }
+            // buiten de lock: producers kunnen intussen events toevoegen
+            process(temp.source(), temp.event());
+        }
     }
 
     public void start(){
-        queueFlag=true;
+        moetStoppen=false;
         thread.start();
     }
 
     public void stop() throws InterruptedException {
-       queueFlag=false;
-       synchronized (queueLock) {queueLock.notifyAll();}
-        for (EventListener l : listenersList) {
-            l.shutdown();
+        synchronized (queueLock) {
+            moetStoppen = true;
+            queueLock.notifyAll();
         }
-       thread.join();
+        thread.join();                      // eerst resterende events verwerken
+        for (EventListener l : listenersList) {
+            l.shutdown();                   // daarna pas de listeners afsluiten
+        }
     }
 }
