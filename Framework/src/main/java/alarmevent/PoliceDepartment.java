@@ -10,7 +10,6 @@ public class PoliceDepartment implements EventListener {
     Random r = new Random();
     
     public PoliceDepartment(){
-        // TODO is this ok?
         EventBroker.getEventBroker().addEventListener(this);
     }
     
