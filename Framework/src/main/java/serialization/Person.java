@@ -1,7 +1,7 @@
 package serialization;
 import java.io.*;
 
-public class Person {
+public class Person implements Serializable {
 	private String firstName,lastName;
 	private PhoneNumber number;
 	public Person(String firstName, String lastName){
