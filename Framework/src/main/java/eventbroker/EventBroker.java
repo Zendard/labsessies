@@ -1,7 +1,6 @@
 package eventbroker;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingQueue;
 
 final public class EventBroker implements Runnable {
 
@@ -121,7 +120,7 @@ final public class EventBroker implements Runnable {
         }
         thread.join();                      // eerst resterende events verwerken
         for (EventListener l : listenersList) {
-            l.shutdown();                   // daarna pas de listeners afsluiten
+            l.terminate();                   // daarna pas de listeners afsluiten
         }
     }
 }

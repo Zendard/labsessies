@@ -31,7 +31,7 @@ public class OrderProcessor implements EventListener {
     }
 
     @Override
-    public void shutdown() {
+    public void terminate() {
         threadPool.shutdown();
     }
 

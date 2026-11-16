@@ -27,6 +27,6 @@ public class Hospital implements EventListener {
     }
 
     @Override
-    public void shutdown() {}
+    public void terminate() {}
 
 }

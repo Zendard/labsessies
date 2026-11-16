@@ -3,5 +3,5 @@ package eventbroker;
 public interface EventListener {
 
     void handleEvent(Event e);
-    void shutdown();
+    void terminate();
 }
