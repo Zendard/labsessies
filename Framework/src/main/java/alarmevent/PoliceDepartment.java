@@ -21,5 +21,8 @@ public class PoliceDepartment implements EventListener {
             System.out.println("Police unit "+r.nextInt(10)+" is checking out the "+alarm.getType()+" at "+alarm.getLocation());
         }
     }
-    
+
+    @Override
+    public void shutdown() {}
+
 }

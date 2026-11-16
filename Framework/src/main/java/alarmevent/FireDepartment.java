@@ -17,5 +17,9 @@ public class FireDepartment implements EventListener {
             System.out.println("Fire squad on the move to "+alarm.getLocation()+" for "+alarm.getType());
         }
     }
-    
+
+    @Override
+    public void shutdown() {}
+
+
 }

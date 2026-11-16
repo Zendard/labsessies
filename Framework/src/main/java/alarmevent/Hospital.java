@@ -25,5 +25,8 @@ public class Hospital implements EventListener {
             System.out.println(name+" sends an ambulance to "+alarm.getLocation()+" for "+alarm.getType());
         }
     }
-    
+
+    @Override
+    public void shutdown() {}
+
 }
