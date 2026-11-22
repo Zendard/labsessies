@@ -30,6 +30,7 @@ public class Connection {
     }
 
     public void send(Event e) throws IOException {
+        System.out.println("bezig met sturen..");
         writer.writeObject(e);
     }
 

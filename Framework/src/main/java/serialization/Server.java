@@ -20,11 +20,15 @@ public class Server {
         ObjectInputStream reader=new ObjectInputStream(socket.getInputStream());
 
         while(true) {
-            Person receivedPerson = (Person) reader.readObject();
-            if (receivedPerson.getFirstName().equals("stop")){break;}
-            Person newPerson = lookUpPhoneNumber(receivedPerson);
+            try {
+                Person receivedPerson = (Person) reader.readObject();
+                if (receivedPerson.getFirstName().equals("stop")) {
+                    break;
+                }
+                Person newPerson = lookUpPhoneNumber(receivedPerson);
 
-            writer.writeObject(newPerson);
+                writer.writeObject(newPerson);
+            }catch (Exception e) {System.out.println(e);}
         }
         serverSocket.close();
 

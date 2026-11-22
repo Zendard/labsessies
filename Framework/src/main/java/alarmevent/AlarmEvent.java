@@ -2,7 +2,9 @@ package alarmevent;
 
 import eventbroker.Event;
 
-public class AlarmEvent extends Event {
+import java.io.Serializable;
+
+public class AlarmEvent extends Event implements Serializable {
     
     private final String location;
     

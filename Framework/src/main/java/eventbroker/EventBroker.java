@@ -1,5 +1,7 @@
 package eventbroker;
 
+import network.Network;
+
 import java.util.*;
 
 final public class EventBroker implements Runnable {
@@ -14,6 +16,9 @@ final public class EventBroker implements Runnable {
     }
     private final Object queueLock=new Object();
     private boolean moetStoppen;
+
+
+
 
     private record QueueItem(Event event, EventPublisher source){}
 
@@ -64,6 +69,7 @@ final public class EventBroker implements Runnable {
         for (EventListener l: listeners.get("*")){
             if (l != source) {
                 l.handleEvent(e); // prevent loops !
+                System.out.println(l);
             }
         }
     }
