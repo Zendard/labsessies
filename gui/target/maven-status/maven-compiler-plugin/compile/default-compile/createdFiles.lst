@@ -1,4 +1,2 @@
 module-info.class
-org/example/gui/HelloController.class
-org/example/gui/HelloApplication.class
-org/example/gui/Launcher.class
+gui/Main.class
