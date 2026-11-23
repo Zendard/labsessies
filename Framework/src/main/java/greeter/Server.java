@@ -16,7 +16,7 @@ public class Server {
 				  PrintWriter writer= new PrintWriter(new OutputStreamWriter( socket.getOutputStream()),true);
 				  BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()),bufferSize);
                   String result="";
-                  while (result !="stop") {
+                  while (result !=null) {
 					  result = reader.readLine();
 					  String rMess = "Hello, " + result;
 					  writer.println(rMess);
