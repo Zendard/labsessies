@@ -22,17 +22,17 @@ public class Server {
         while(true) {
             try {
                 Person receivedPerson = (Person) reader.readObject();
-                if (receivedPerson.getFirstName().equals("stop")) {
-                    break;
-                }
                 Person newPerson = lookUpPhoneNumber(receivedPerson);
 
                 writer.writeObject(newPerson);
-            }catch (Exception e) {System.out.println(e);}
+            } catch (EOFException e) {
+                break;
+            }
+            catch (Exception e) {System.out.println(e);break;}
         }
-        serverSocket.close();
 
-    }}
+    }
+    }
 
     private static void fillInPhoneNumberDataBase() {
         Person[] p = {new Person("Jan", "Janssens", new PhoneNumber("32", "9", "44 55 66")),
