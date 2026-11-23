@@ -1,5 +1,5 @@
 order/BlacklistOrderProcessor.class
-order/OrderEvent.class
 order/OrderProcessor.class
+order/OrderEvent.class
 order/Customer.class
 main/Main.class
