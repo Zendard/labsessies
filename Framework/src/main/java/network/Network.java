@@ -16,29 +16,42 @@ import java.util.List;
 
 public class Network extends EventPublisher implements EventListener {
     public final List<Connection> connections=new ArrayList<>();
+    private ConnectionListener connectionListener = null;
 
     public Network(int port) throws IOException {
         super();
-        new ConnectionListener(this,port);
+        connectionListener= new ConnectionListener(this,port);
         EventBroker.getEventBroker().addEventListener(this);
+        connectionListener.start();
     }
 
     public Network() throws IOException {
         super();
         EventBroker.getEventBroker().addEventListener(this);
     }
-    /*
+
     public void connect(InetAddress host,int port){
         try {
             Socket socket = new Socket(host, port);
             Connection connection = new Connection(socket);
+            connection.receive(this);
             connections.add(connection);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
-    */
+
+    public void connect (Socket socket){
+        try {
+            Connection connection = new Connection(socket);
+            connections.add(connection);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /*
      public void connect(InetAddress host, int port){
          try {
              try{
@@ -80,6 +93,7 @@ public class Network extends EventPublisher implements EventListener {
              }
 
          }
+     */
 
     @Override
     public void handleEvent(Event e) {
@@ -94,6 +108,9 @@ public class Network extends EventPublisher implements EventListener {
 
     @Override
     public void terminate() {
+        if (connectionListener != null){
+            connectionListener.terminate();
+        }
         for(Connection connection:connections) {
             connection.close();
         }

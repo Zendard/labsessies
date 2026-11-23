@@ -13,8 +13,7 @@ import network.Network;
 public class Server {
 
     public static void main(String[] args) throws IOException{
-        Network netwerk = new Network();
-        netwerk.connect(InetAddress.getLocalHost(), 5000);
+        new Network(5000);
 
         Hospital UZ = new Hospital("UZ");
         Hospital AZ = new Hospital("AZ");
