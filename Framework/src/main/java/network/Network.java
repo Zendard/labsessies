@@ -45,6 +45,7 @@ public class Network extends EventPublisher implements EventListener {
     public void connect (Socket socket){
         try {
             Connection connection = new Connection(socket);
+            connection.receive(this);
             connections.add(connection);
         } catch (IOException e) {
             throw new RuntimeException(e);

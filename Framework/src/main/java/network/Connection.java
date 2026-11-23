@@ -12,6 +12,7 @@ public class Connection {
     private final ObjectInputStream reader;
     private final ObjectOutputStream writer;
     private final Socket socket;
+    private ReceiverThread receiverThread;
 
     public Connection(InetAddress host, int port) throws IOException {
         super();
@@ -30,17 +31,19 @@ public class Connection {
     }
 
     public void send(Event e) throws IOException {
-        System.out.println("bezig met sturen..");
+        System.out.println("Bezig met sturen..");
         writer.writeObject(e);
     }
 
     public void receive(Network network){
-        ReceiverThread receiverThread = new ReceiverThread(network,reader);
+        System.out.println("Bezig met ontvangen..");
+        receiverThread = new ReceiverThread(network,reader);
         receiverThread.start();
     }
 
     public void close(){
         try {
+           receiverThread.terminate();
             socket.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -51,6 +54,7 @@ public class Connection {
 class ReceiverThread extends Thread{
     private final Network network;
     private final ObjectInputStream reader;
+    private boolean runFlag = true;
 
     protected ReceiverThread(Network network,ObjectInputStream reader){
         this.network=network;
@@ -60,12 +64,18 @@ class ReceiverThread extends Thread{
     @Override
     public void run() {
         Event e = null;
-        try {
-            e = (Event) reader.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            throw new RuntimeException(ex);
-        }
+        while (runFlag) {
+            try {
+                e = (Event) reader.readObject();
+            } catch (IOException | ClassNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
 
-        network.publishEvent(e);
+            network.publishEvent(e);
+        }
+    }
+
+    public void terminate(){
+        runFlag=false;
     }
 }

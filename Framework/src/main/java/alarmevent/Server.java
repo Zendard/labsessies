@@ -20,11 +20,6 @@ public class Server {
         PoliceDepartment police = new PoliceDepartment();
         FireDepartment fireDepartment = new FireDepartment();
 
-        EventBroker.getEventBroker().addEventListener(UZ);
-        EventBroker.getEventBroker().addEventListener(AZ);
-
-        EventBroker.getEventBroker().addEventListener("assault", police);
-        EventBroker.getEventBroker().addEventListener("fire",fireDepartment);
 
         EventBroker.getEventBroker().start();
     }

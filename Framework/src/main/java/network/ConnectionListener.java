@@ -26,6 +26,7 @@ public class ConnectionListener extends Thread{
         while(flag) {
             try {
                 Socket socket = serverSocket.accept();
+                System.out.println("Accepted client");
                 network.connect(socket);
             } catch (IOException e) {
                 throw new RuntimeException(e);
