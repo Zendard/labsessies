@@ -1,2 +1,3 @@
 module-info.class
 gui/Main.class
+gui/LoginWindow.class
