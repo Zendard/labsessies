@@ -56,11 +56,13 @@ public class LoginWindow extends Scene {
         try {
             int port = Integer.parseInt(portProperty.getValue());
             if (port<0 || port>65535){
+                portProperty.setValue("");
                setError("Please enter a number between 0 and 65535");
             }else{
-                //primaryStage.setScene(new MainWindow());
+                primaryStage.setScene(new MainWindow(primaryStage,port));
             }
         } catch (NumberFormatException e) {
+            portProperty.setValue("");
             setError("Please enter a number!");
         }
     }

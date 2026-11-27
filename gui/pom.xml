@@ -30,7 +30,14 @@
       <version>21.0.6</version>
     </dependency>
 
-<dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>Framework</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+
+
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit.version}</version>
