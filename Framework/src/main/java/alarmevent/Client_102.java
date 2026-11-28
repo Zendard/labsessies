@@ -15,13 +15,16 @@ public class Client_102 {
         EventBroker.getEventBroker().start();
         EmergencyCallCenter callCenter112 = new EmergencyCallCenter("122");
 
-        /*try{
-        Thread.sleep(5000);} catch (InterruptedException e) {
+
+
+
+        callCenter112.incomingCall("fire","Zwijnaardse Steenweg (client102)");
+
+        try{
+            Thread.sleep(5000);} catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }*/
+        }
 
-
-        callCenter112.incomingCall("fire","Zwijnaardse Steenweg");
-        callCenter112.incomingCall("assault","Overpoortstraat");
+        callCenter112.incomingCall("firel","Overpoortstraat (client102)");
     }
 }

@@ -24,7 +24,7 @@ public class LoginWindow extends Scene {
     public LoginWindow(Stage primaryStage) {
         var root = new VBox(16);
         root.setAlignment(Pos.CENTER);
-        super(root,200,150);
+        super(root,500,150);
         this.primaryStage=primaryStage;
         this.setFill(Color.LIGHTGRAY);
 

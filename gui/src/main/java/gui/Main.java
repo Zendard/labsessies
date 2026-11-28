@@ -7,6 +7,7 @@ public class Main extends javafx.application.Application {
         @Override
         public void start(Stage primaryStage) {
             var loginWindow = new LoginWindow(primaryStage);
+            primaryStage.setTitle("Login window");
             primaryStage.setScene(loginWindow);
             primaryStage.show();
         }
